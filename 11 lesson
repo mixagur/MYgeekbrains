@@ -8,21 +8,21 @@ CREATE TABLE logs (
   created_at DATETIME DEFAULT NOW()
 ) ENGINE=ARCHIVE;
 
--- Помещаю доп интформацию в users
+-- Помещаю доп информацию в users
 CREATE TRIGGER users_log AFTER INSERT ON users FOR EACH ROW
   INSERT INTO logs 
     SET 
       table_name = 'users',
       pk_id = NEW.id,
       name = NEW.name;
--- Помещаю доп интформацию в catalogs
+-- Помещаю доп информацию в catalogs
 CREATE TRIGGER catalogs_log AFTER INSERT ON catalogs FOR EACH ROW
   INSERT INTO logs 
     SET 
       table_name = 'catalogs',
       pk_id = NEW.id,
       name = NEW.name;
--- Помещаю доп интформацию в products
+-- Помещаю доп информацию в products
 CREATE TRIGGER products_log AFTER INSERT ON products FOR EACH ROW
   INSERT INTO logs 
     SET 
