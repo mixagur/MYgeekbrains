@@ -290,7 +290,7 @@ GROUP BY curdate
 ORDER BY curdate;
 
 /*-------Среднее значение аналитики Пользователя по всем транзакциям, с группировкой по валютам--------------*/
-CREATE VIEW transactions_by_karapuzikov_analytics (curcode, allsum, avg_analytic_value) AS 
+CREATE VIEW transactions_by_user_analytics (curcode, allsum, avg_analytic_value) AS 
 SELECT C.code, sum(T.ammount)
      , AVG(CAST(CONV(HEX(TA.analytic_value),16, 10) as UNSIGNED  INTEGER)/100000000) 
 FROM transactions T 
